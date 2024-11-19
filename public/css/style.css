@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #DBDDF4;
+    overflow: hidden;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+}
+.row {
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    height: auto;
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+.sub-columns {
+    display: flex;
+    width: 100%;
+    height: 16%;
+    gap: 10px;
+}
+
+.sub-column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.column-title {
+    margin-bottom: 15px;
+}
+
+.card {
+    border-radius: 15px;
+    height: 190px;
+}
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.sidebar{
+    border-radius: 15px;
+    height: 850px;
+    width:250px;
+    padding-top: 20px;
+    padding-left: 20px;
+    background-color: white;
+}
+
+.welcome{
+    border-radius: 15px;
+    height: 200px;
+    width:1065px;
+    padding-top: 20px;
+    padding-left: 20px;
+    background-color: white;
+}
+
+.profile{
+    border-radius: 15px;
+    height: 439px;
+    width:1065px;
+    padding-top: 20px;
+    padding-left: 20px;
+    background-color: white;
+}
+.logo{
+    width: 50px;
+    font-style:bold;
+}
+.sideOp{
+    background-color: white;
+    margin: 10px;
+    padding: 7px;
+    border-radius: 10px;
+}
+.sideOp:hover {
+    background-color: #DBDDF4;
+    transition: background-color 0.3s ease;
+    margin: 8px;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.side-logo{
+    width:20px;
+}
+.sideOp div {
+    color: #353E6C;
+    font-size:15px;
+}
+
+.logo-text div{
+    font-weight: bold;
+    font-size:20px;
+}
+
+.orang{
+    width : auto;
+    height: auto;
+    max-width: 1090px;
+    max-height: 1000px;
+    object-fit: contain;
+}
+
+.task{
+
+    width: 100%;
+    max-width: 90px;
+    height: auto;
+    max-height: 90px;
+    object-fit: contain;
+    border-radius: 10px;
+    background-color: #5E6790;
+}
+
+
+
+.profile img{
+    margin:50px;
+}
+
+.btn-login{
+    background-color: #5038ED;
+    color: white;
+}
+
+.btn-details{
+    background-color: #F9908A;
+    color: black;
+    font-weight: bold;
+    width: 50%;
+    border-radius: 15px;
+}
+
+.btn-details-m{
+    background-color: #F9908A;
+    color: black;
+    font-weight: bold;
+    width: 50%;
+    border-radius: 15px;
+}
+
+
+.btn-details:hover{
+    background-color: #fab2ad ;
+    transition: background-color 0.3s ease;
+}
+
+
+.btn-add {
+    background-color: #8AB6F9;
+    color: black;
+    font-weight: bold;
+    width: 35%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-add:hover{
+    background-color: #b2cdf8;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel {
+    background-color: #FA6969;
+    color: black;
+    font-weight: bold;
+    width: 25%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-cancel:hover{
+    background-color: #f79999;
+    transition: background-color 0.3s ease;
+}
+
+.btn-detail-sm {
+    background-color: #F9908A;
+    color: black;
+    font-weight: bold;
+    width: 35%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-detail-sm-1 {
+    background-color: #F9908A;
+    color: black;
+    font-weight: bold;
+    width: 50%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-detail-sm-2 {
+    background-color: #F9908A;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-terima-sm-2 {
+    background-color: #52C18C;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.badge-active {
+    background-color: #52C18C;
+    color: black;
+    font-weight: bold;
+    width: 15%;
+    height: 50%;
+    border-radius: 20px;
+    font-size: small;
+}
+
+.btn-terima-sm-2:hover {
+    background-color: #84cfaa;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-tolak-sm-2 {
+    background-color: #FA6969;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-tolak-sm-2:hover {
+    background-color: #f99b9b;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    font-size: small;
+}
+.btn-tolak-sm-2 {
+    background-color: #FA6969;
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-refresh-sm-2{
+    background-color: #F6C343;
+    color: black;
+    font-weight: bold;
+    width: 40%;
+    border-radius: 10px;
+    font-size: small;
+}
+.btn-refresh-sm-2:hover{
+    background-color: #f3d894 ;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete-sm-1 {
+    background-color: #e93b32;
+    color: black;
+    font-weight: bold;
+    width: 50%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.btn-delete-sm-1:hover{
+    background-color: #fa716a ;
+    transition: background-color 0.3s ease;
+}
+
+.btn-detail-sm:hover{
+    background-color: #fab2ad ;
+    transition: background-color 0.3s ease;
+}
+
+.badge-label {
+    background-color: #353E6C;
+    color: white;
+    font-weight: bold;
+    width: 20%;
+    height:100%;
+    border-radius: 10px;
+    font-size: small;
+}
+.btn-kelas {
+    background-color: #B5A3C6;
+    color: white;
+    font-weight: bold;
+    width: 20%;
+    height:100%;
+    border-radius: 10px;
+    font-size: small;
+}
+
+.sub-sub {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    height: 100%;
+}
+
+.option{
+    width: 100%;
+    height: 7%;
+    border-radius: 15px;
+    background-color:#775E90;
+    font-size: small;
+    font-weight: bold;
+}
+
+.table {
+    background-color: #f2f2f2; /* Light grey background */
+    color: #333; /* Text color */
+  }
+  
+  .table th {
+    background-color: #a085bc; /* Header background color */
+    color: white; /* Header text color */
+  }
+  
+  .table tbody tr:nth-child(even) td {
+    background-color: #a085bc; /* Stripe color for even rows */
+  }
+  
+  .table tbody tr:nth-child(odd) td{
+    background-color: #DBDDF4; /* Stripe color for odd rows */
+  }
+
+  .login-logo{
+    background-color: white;
+    border-radius: 55px; 
+    box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.input-form{
+    border-radius: 10px;
+    background-color: #F0EDFF;
+    border-color: #F0EDFF;
+    width: 280px;
+    height: 40px;
+    padding-left: 15px;
+}
+
+.sideOp.active {
+    background-color: #DBDDF4; /* Ubah ke warna yang diinginkan */
+    color: #000; /* Warna teks saat aktif */
+    font-weight: bold; /* Agar teks lebih tebal */
+}
+
+.row-overflow {
+    max-height: 550px; /* Sesuaikan dengan kebutuhan */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
