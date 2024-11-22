@@ -12,20 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mata_kuliah', function (Blueprint $table) {
-            $table->id();
+            $table->string('kodemk', 8)->primary();
             $table->string('nama_mata_kuliah');
             $table->integer('sks');
-            $table->unsignedBigInteger('nidn_dosen_1');
+            $table->string('nidn_dosen_1');
             $table->foreign('nidn_dosen_1')->references('nidn')->on('dosen');
-            $table->unsignedBigInteger('nidn_dosen_2')->nullable(); 
+            $table->string('nidn_dosen_2')->nullable(); 
             $table->foreign('nidn_dosen_2')->references('nidn')->on('dosen');
-            $table->unsignedBigInteger('nidn_dosen_3')->nullable(); 
+            $table->string('nidn_dosen_3')->nullable(); 
             $table->foreign('nidn_dosen_3')->references('nidn')->on('dosen');
             $table->unsignedBigInteger('id_program_studi');
             $table->foreign('id_program_studi')->references('id')->on('program_studi');
-            $table->string('jenis mata kuliah');
-            $table->string('semester');
-            $table->string('kelas');
+            $table->string('jenis_mata_kuliah');
+            $table->integer('semester');
             $table->timestamps();
         });
     }

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa');
             $table->unsignedBigInteger('id_jadwal');
             $table->foreign('id_jadwal')->references('id')->on('jadwal');
-
             $table->string('tahun_ajaran');
             $table->string('jenis_semester');
             $table->unsignedTinyInteger('status')->default(0);

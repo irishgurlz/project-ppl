@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Program_Studi;
-    use App\Models\Ruang;
+use App\Models\Ruang;
 use App\Models\Ketua_Program_Studi;
 use Illuminate\Support\Facades\Validator;
 

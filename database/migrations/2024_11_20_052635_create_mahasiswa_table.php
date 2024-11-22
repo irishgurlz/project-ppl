@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
-            $table->string('nidn', 14)->primary(); 
+            $table->id();
+            $table->string('NIM');
             $table->string('nama_mahasiswa');
             $table->text('alamat');
             $table->year('angkatan');
             $table->unsignedBigInteger('id_program_studi');
             $table->foreign('id_program_studi')->references('id')->on('program_studi');
             $table->string('telepon');
-            $table->string('nidn');
+            $table->string('status_mahasiswa');
+            $table->unsignedBigInteger('id_pembimbing_akademik');
+            $table->foreign('id_pembimbing_akademik')->references('id')->on('pembimbing_akademik');
             $table->timestamps();
         });
     }

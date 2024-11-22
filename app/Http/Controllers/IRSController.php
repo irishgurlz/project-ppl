@@ -3,23 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Program_Studi;
-use App\Models\Angkatan;
+use App\Models\IRS;
+use App\Models\Jadwal;
 use App\Models\MataKuliah;
-use App\Models\Dosen;
 
 
-class KaprodiJadwalController extends Controller
+class IRSController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $IRS = IRS::all(); 
+        $jadwal = Jadwal::all();
         $mata_kuliah = MataKuliah::all();
-        $dosen = Dosen::all();
-        return view('Kaprodi.aturJadwal', ['mata_kuliah' => $mata_kuliah, 'dosen' => $dosen]);
+        return view('mahasiswa/irs', ['jadwal' => $jadwal, 'MataKuliah' => $mata_kuliah]);
     }
 
     /**

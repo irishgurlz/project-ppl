@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('irs', function (Blueprint $table) {
+        Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_mahasiswa');
-            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa');
-            $table->unsignedBigInteger('id_jadwal');
-            $table->foreign('id_jadwal')->references('id')->on('jadwal');
-
+            $table->string('kodemk');
+            $table->foreign('kodemk')->references('kodemk')->on('mata_kuliah');
+            $table->unsignedBigInteger('id_ruang');
+            $table->foreign('id_ruang')->references('id')->on('ruang');
+            $table->string('hari');
+            $table->time('jam');
             $table->string('tahun_ajaran');
             $table->string('jenis_semester');
-            $table->unsignedTinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('irs');
+        Schema::dropIfExists('jadwal');
     }
 };

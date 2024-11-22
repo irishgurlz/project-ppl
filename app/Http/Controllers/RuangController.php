@@ -78,6 +78,25 @@ class RuangController extends Controller
                 'nama_program_studi' => $prodi->nama_program_studi,
             ],
         ]);
+
+        // Nanti hapus
+        // $request->validate([
+        //     'nama_ruang' => 'required',
+        //     'kapasitas' => 'required|integer',
+        //     'id_program_studi' => 'required|exists:program_studi,id',
+        //     'id_gedung' => 'required|exists:gedung,id'
+        // ]);
+    
+        // $ruang = new Ruang;
+        // $ruang->nama_ruang = $request->nama_ruang;
+        // $ruang->kapasitas = $request->kapasitas;
+        // $ruang->id_program_studi = $request->id_program_studi;
+        // $ruang->id_gedung = $request->id_gedung;
+    
+        // $ruang->save();
+        // $gedung = Gedung::find($request->id_gedung);
+        // return redirect()->route('gedung.show', $gedung->id)
+        // ->with('success', 'Ruang berhasil ditambahkan.');
     }
     
     

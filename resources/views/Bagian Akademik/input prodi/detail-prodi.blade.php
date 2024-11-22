@@ -36,13 +36,13 @@
                     <a href="/akademik/program_studi/{{ $value->id }}/edit" style="padding: 0; margin: 0;">
                         <img src="{{ asset('img/edit.png') }}" alt="" style="width: 24px; height: 24px;">
                     </a>
-                    <form action="/akademik/program_studi/{{ $value->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');" style="padding: 0; margin: 0;">
+                    {{-- <form action="/akademik/program_studi/{{ $value->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');" style="padding: 0; margin: 0;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" style="background: none; border: none; padding: 0; margin: 0; cursor: pointer;">
                             <img src="{{ asset('img/trash.png') }}" style="width: 24px; height: 24px;">
                         </button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
             
