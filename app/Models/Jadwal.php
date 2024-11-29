@@ -11,12 +11,14 @@ class Jadwal extends Model
 
     protected $table = 'jadwal';
     protected $fillable = [
-        'id_mata_kuliah', 
+        'kodemk', 
         'id_ruang', 
         'hari', 
-        'jam', 
-        'tahun_ajaran', 
-        'semester'
+        'jam_mulai',
+        'jam_selesai', 
+        'jenis_semester', 
+        'kelas_matkul',
+        'kuota'
     ];
 
     /**
@@ -24,6 +26,12 @@ class Jadwal extends Model
      */
     public function listMataKuliah()
     {
-        return $this->hasMany(MataKuliah::class, 'id_mata_kuliah', 'id');
+        return $this->belongsTo(MataKuliah::class, 'kodemk', 'kodemk');
+    }
+    
+
+    public function ruang()
+    {
+        return $this->belongsTo(Ruang::class, 'id_ruang'); 
     }
 }

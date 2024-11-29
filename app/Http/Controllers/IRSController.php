@@ -15,11 +15,55 @@ class IRSController extends Controller
      */
     public function index()
     {
-        $IRS = IRS::all(); 
-        $jadwal = Jadwal::all();
+        // Mengambil semua data IRS (asumsi ada filter berdasarkan mahasiswa atau kondisi lainnya)
+        $IRS = IRS::all(); // Pastikan hanya mengambil data IRS untuk mahasiswa yang sedang login
+    
+        // Mengambil jadwal beserta relasi ruang dan mata kuliah
+        $jadwal = Jadwal::with(['ruang', 'listMataKuliah'])->get(); // Dengan eager loading untuk memuat relasi
+    
+        // Mengambil semua data mata kuliah
         $mata_kuliah = MataKuliah::all();
-        return view('mahasiswa/irs', ['jadwal' => $jadwal, 'MataKuliah' => $mata_kuliah]);
+    
+        // Mengirim data ke view
+        return view('mahasiswa.irs', compact('jadwal', 'mata_kuliah', 'IRS'));
     }
+    
+
+    // public function getJadwal(Request $request) {
+    //     $request->validate([
+    //         'kodemk' => 'required',
+    //     ]);
+    
+    //     // Fetch Jadwal data based on kodemk
+    //     $jadwal = Jadwal::where('kodemk', $request->kodemk)->get();
+    
+    //     // Check if data is found
+    //     if ($jadwal->isEmpty()) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Data Jadwal Tidak Ditemukan',
+    //         ]);
+    //     }
+    
+    //     // Return the response including the rendered HTML
+    //     return response()->json([
+    //         'success' => true,
+    //         'message' => 'Data Jadwal Berhasil Ditampilkan',
+    //         'data' => view('mahasiswa.partial.table-jadwal', compact('jadwal'))->render()
+    //     ]);
+    // }
+
+    public function getJadwal(Request $request)
+    {
+        $kodemk = $request->get('kodemk');
+        
+        // Retrieve the jadwal data based on the kodemk
+        $jadwal = Jadwal::where('kodemk', $kodemk)->get();
+
+        // Return the data as JSON
+        return response()->json($jadwal);
+    }
+    
 
     /**
      * Show the form for creating a new resource.

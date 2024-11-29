@@ -40,6 +40,26 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'akademik' => [
+            'driver' => 'session',
+            'provider' => 'akademik',
+        ],
+        'dekan' => [
+            'driver' => 'session',
+            'provider' => 'dekan',
+        ],
+        'ketua_program_studi' => [
+            'driver' => 'session',
+            'provider' => 'ketua_program_studi',
+        ],
+        'pembimbing_akademik' => [
+            'driver' => 'session',
+            'provider' => 'pembimbing_akademik',
+        ],
+        'mahasiswa' => [
+            'driver' => 'session',
+            'provider' => 'mahasiswa',
+        ],
     ],
 
     /*
@@ -69,6 +89,26 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'akademik' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Actor::class),
+        ],
+        'dekan' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Actor::class),
+        ],
+        'ketua_program_studi' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Actor::class),
+        ],
+        'pembimbing_akademik' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Actor::class),
+        ],
+        'mahasiswa' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Actor::class),
+        ],
     ],
 
     /*

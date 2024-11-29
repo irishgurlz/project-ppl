@@ -15,4 +15,9 @@ class Ketua_Program_Studi extends Model
     {
         return $this->belongsTo(Dosen::class, 'nidn_dosen', 'nidn');
     }
+
+    public function programStudi()
+    {
+        return $this->belongsTo(Program_Studi::class, 'id_program_studi');
+    }
 }

@@ -15,6 +15,10 @@ class Program_Studi extends Model
         return $this->hasMany(Ruang::class,'id_program_studi');
     }
 
+    public function listMataKuliah(){
+        return $this->hasMany(MataKuliah::class,'id_program_studi');
+    }
+
     // public function gedung(){
     //     return $this->belongsToMany(Gedung::class,'ruang')->withPivot(['nama_ruang', 'kapasitas', 'status']);
     // }
@@ -25,6 +29,8 @@ class Program_Studi extends Model
 
     public function ketua_program_studi()
     {
-        return $this->belongsTo(Ketua_Program_Studi::class, 'id_ketua_program_studi', 'id');
+        return $this->hasOne(Ketua_Program_Studi::class, 'id_ketua_program_studi', 'id');
     }
+
+    
 }

@@ -44,7 +44,7 @@
                 <p class="d-flex align-items-end m-2">Input Mata Kuliah </p>
             </div>
             <div class="bg-white column-title d-flex justify-content-center align-items-center" style="width:100%; height: 100%; border-radius: 15px; margin: 0; position: relative;">
-                <div class="d-flex flex-column justify-content-center align-items-center" style="width: 95%; height: 90%; border-radius: 15px; padding:auto;">
+                <div class=" d-flex flex-column justify-content-start align-items-center" style="width: 95%; height: 90%; border-radius: 15px; padding:auto;">
         <!-- Untuk Dropdown -->
                             <!-- <div class="col-3">
                                     <select class="form-select form-select-sm" aria-label="Default select example">
@@ -76,8 +76,8 @@
                                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                         <button class="btn btn-outline-success" type="submit">Search</button>
 
-                                    <div class="col-auto" style="margin-left: 465px;">
-                                    <a class="btn btn-sm btn-add ms-auto" href="mata_kuliah/create" role="button">Tambah</a>
+                                    <div class="btn-add d-flex justify-content-center" style="margin-left: 660px; width: 55%;">
+                                        <a style="font-weight: bold;" class="btn btn-sm " href="mata_kuliah/create" role="button">Tambah</a>
                                     </div>
 
                                     </form>
@@ -87,7 +87,7 @@
 
 
                             <!--Menambahkan table-->
-                            <table class="table table-striped table-bordered text-center">
+                            <table class="table table-striped table-bordered text-center" style="border-radius: 10px; overflow: hidden;">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -110,9 +110,9 @@
                                         <td> {{$value -> sks}}</td>
                                         <td style="width: 5%"> {{$value -> semester}}</td>
                                         <td style="width: 20%">
-                                            {{$value->dosen1->nama_dosen ?? 'N/A'}}<br>
-                                            {{$value->dosen2->nama_dosen ?? 'N/A'}}<br>
-                                            {{$value->dosen3->nama_dosen ?? 'N/A'}}
+                                            {{$value->dosen1->nama_dosen}}<br>
+                                            {{$value->dosen2->nama_dosen ?? ''}}<br>
+                                            {{$value->dosen3->nama_dosen ?? ''}}
                                         </td>
                                         
                                         <td>
@@ -121,7 +121,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="7">Tidak ada data </td>
+                                        <td colspan="8">Tidak ada data </td>
                                     </tr>
                                     @endforelse
                                 </tbody>

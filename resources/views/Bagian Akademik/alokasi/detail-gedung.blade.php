@@ -6,6 +6,15 @@
     </div>
 </div>
 
+{{-- <form action="/akademik/gedung/{{$gedung->id}}" method="get">
+    <input type="hidden" name="id_gedung" id="id_gedung" value="{{ $gedung->id }}">
+    <!-- Tambah Kelas Button -->
+    <div class="text-end mb-3">
+        <a href="/kaprodi/aturJadwal/create" class="btn btn-sm btn-add">Tambah Kelas</a>
+        <button type="submit" class="btn btn-sm btn-add">Tambah Ruang</button>
+    </div>
+</form> --}}
+
 <div class="d-flex justify-content-end mt-5">
     <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#modal-ruang" style="width:15%; margin-right: 6%;">
       Tambah Ruang

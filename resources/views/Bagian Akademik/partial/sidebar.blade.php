@@ -33,7 +33,7 @@
                 </div>
             </div>
         </a>
-        <a  href="/" class="nav-link">
+        <a  href="{{ route('auth.logout') }}" class="nav-link">
             <div type="button" class="sideOp {{ Request::is('/') ? 'active' : '' }}">
                 <div>
                     <img src="{{ asset('img/logout.png') }}" class="side-logo me-3">Log Out

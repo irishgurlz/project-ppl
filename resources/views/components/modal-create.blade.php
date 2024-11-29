@@ -14,11 +14,6 @@
                         <input type="text" class="form-control" id="nama_program_studi" name="nama_program_studi" style="border: none;">
                         <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-nama_program_studi"></div>
                     </div>
-                    {{-- <div class="mb-3">
-                        <label for="total_mahasiswa" class="form-label text-white">Total Mahasiswa</label>
-                        <input type="text" class="form-control" id="total_mahasiswa" name="total_mahasiswa" style="border: none;">
-                        <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-total-mahasiswa"></div>
-                    </div> --}}
                     <div class="mb-3">
                         <label for="id_ketua_program_studi" class="form-label text-white" style="width: 100%;">Ketua Program Studi</label>
                         <select name="id_ketua_program_studi" id="id_ketua_program_studi" class="input-form" style="width: 100%;">
@@ -31,11 +26,6 @@
                         </select>
                         <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-id_ketua_program_studi"></div>
                     </div>
-                    {{-- <div class="mb-3">
-                        <label for="ketua_program_studi" class="form-label text-white">Ketua Program Studi</label>
-                        <input type="text" class="form-control" id="ketua_program_studi" name="ketua_program_studi" style="border: none;">
-                        <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-ketua"></div>
-                    </div> --}}
                 </form>
             </div>
             <div class="modal-footer">

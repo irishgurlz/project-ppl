@@ -18,12 +18,16 @@ return new class extends Migration
             $table->unsignedBigInteger('id_ruang');
             $table->foreign('id_ruang')->references('id')->on('ruang');
             $table->string('hari');
-            $table->time('jam');
-            $table->string('tahun_ajaran');
+            $table->time('jam_mulai');
+            $table->time('jam_selesai')->default('01:00:00'); 
+            $table->integer('kuota');
             $table->string('jenis_semester');
+            $table->string('kelas_matkul');
+            $table->unsignedTinyInteger('status')->default(0);
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

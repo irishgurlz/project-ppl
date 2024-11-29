@@ -2,21 +2,21 @@
 <div class="bg-white p-3" style="height:100%; width:100%; border-radius:15px;">
                 <div class = "logo-text">
                     <div>
-                        <img src="img/logo.png" class="logo mb-3 mt-3 me-2 ms-2" alt="...">FOCUS
+                        <img src="{{ asset('img/logo.png') }}" class="logo mb-3 mt-3 me-2 ms-2" alt="...">FOCUS
                     </div>
                 </div>
                 <div>
-                    <a  href="/dashboard" class="nav-link active">
+                    <a  href="/mahasiswa/dashboard" class="nav-link active">
                         <div type="button" class="sideOp">
                             <div>
-                                <img src="img/dashboard.png" class="side-logo me-3">Dashboard
+                                <img src="{{ asset('img/dashboard.png') }}" class="side-logo me-3">Dashboard
                             </div>
                         </div>
                     </a>
                     <a  href="/profile" class="nav-link">
                     <div type="button" class="sideOp">
                         <div>
-                            <img src="img/users.png" class="side-logo me-3">Profile
+                            <img src="{{ asset('img/users.png') }}"class="side-logo me-3">Profile
                         </div>
                     </div>
                     </a>
@@ -30,7 +30,7 @@
                     <a href="/registrasiakademik" class="nav-link">
                     <div type="button" class="sideOp">
                         <div>
-                            <img src="img/registrasi.png" class="side-logo me-3">Registrasi Akademik
+                            <img src="{{ asset('img/registrasi.png') }}" class="side-logo me-3">Registrasi Akademik
                         </div>
                     </div>
                     <a  href="/mahasiswa/irs" class="nav-link">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                     </a>
-                    <a  href="/" class="nav-link">
+                    <a  href="{{ route('auth.logout') }}" class="nav-link">
                         <div type="button" class="sideOp">
                             <div>
                                 <img src="img/logout.png" class="side-logo me-3">Log Out

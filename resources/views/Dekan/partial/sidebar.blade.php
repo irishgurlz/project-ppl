@@ -33,30 +33,12 @@
                 </div>
             </div>
         </a>
-
-        @guest
-        <a class="nav-link" href="/login">
-            <div type="button" class="sideOp">
+        <a  href="{{ route('auth.logout') }}" class="nav-link">
+            <div type="button" class="sideOp {{ Request::is('/') ? 'active' : '' }}">
                 <div>
-                    <img src="{{ asset('img/logout.png') }}" class="side-logo me-3" alt="Log In" loading="lazy">Log In
+                    <img src="{{ asset('img/logout.png') }}" class="side-logo me-3">Log Out
                 </div>
             </div>
         </a>
-        @endguest
-        @auth
-        <a class="nav-link" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-            <div type="button" class="sideOp">
-                <div>
-                    <img src="{{ asset('img/logout.png') }}" class="side-logo me-3" alt="Log Out" loading="lazy">Log Out
-                </div>
-            </div>
-        </a>
-        @endauth
-
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
     </div>
 </div>

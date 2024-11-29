@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB; // Pastikan facade DB diimpor
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,16 +12,37 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
-        $this->call([
-            RuangSeeder::class,
-            // AngkatanSeeder::class,
+        DB::table('actor')->insert([
+            // [
+            //     'name' => 'Aniqah Nursabrina',
+            //     'email' => 'aniqahnursabrina@akademik.com',
+            //     'password' => bcrypt('akademik'),
+            //     'role' => 'akademik'
+            // ],
+            // [
+            //     'name' => 'Aniqah Nursabrina',
+            //     'email' => 'aniqahnursabrina@dekan.com',
+            //     'password' => bcrypt('dekan'),
+            //     'role' => 'dekan'
+            // ],
+            [
+                'name' => 'Qun Adrian',
+                'email' => 'qunadrian@kaprodi.com',
+                'password' => bcrypt('kaprodi'),
+                'role' => 'ketua_program_studi'
+            ],
+            [
+                'name' => 'Emi Sabrina',
+                'email' => 'emisabrina@kaprodi.com',
+                'password' => bcrypt('kaprodi'),
+                'role' => 'ketua_program_studi'
+            ],
+            // [
+            //     'name' => 'Yesi Dwiningtias',
+            //     'email' => 'yesidwi@mahasiswa.com',
+            //     'password' => bcrypt('mahasiswa'),
+            //     'role' => 'mahasiswa'
+            // ]
         ]);
     }
 }

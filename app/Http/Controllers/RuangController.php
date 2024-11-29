@@ -13,23 +13,29 @@ class RuangController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         // Display the list of rooms (ruang).
         $allGedung = Gedung::all(); 
+        // $gedung = Gedung::find($request->id);
+        // $gedung = Gedung::where('id', $request->id)->first();
+        $gedung = Gedung::find($request->id) ?? Gedung::first();
+
         $program_studi = Program_Studi::all();
-        return view('Bagian Akademik.alokasi.intro-alokasi', ['allGedung' => $allGedung, 'program_studi' => $program_studi]);
+        return view('Bagian Akademik.alokasi.intro-alokasi', ['allGedung' => $allGedung, 'program_studi' => $program_studi, 'gedung' => $gedung]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
         // Fetch all Gedung and Program Studi data for the form.
         $allGedung = Gedung::all(); 
-        $gedung = Gedung::all();
+        // $gedung = Gedung::all();
         $program_studi = Program_Studi::all();
+        $gedung = Gedung::where('id', $request->id)->first();
+
         
         // Return the view with the fetched data.
         return view('Bagian Akademik.alokasi.add-ruang', [
@@ -47,10 +53,11 @@ class RuangController extends Controller
         // Validasi input
         $validator = Validator::make($request->all(), [
             'id_gedung' => 'required|exists:gedung,id',
-            'nama_ruang' => 'required|string',
-            'kapasitas' => 'required|integer',
+            'nama_ruang' => 'required|string|max:255',
+            'kapasitas' => 'required|integer|min:0',
             'id_program_studi' => 'required|exists:program_studi,id',
         ]);
+        
     
         if ($validator->fails()) {
             return response()->json([
@@ -59,15 +66,17 @@ class RuangController extends Controller
             ], 422);
         }
     
-        $gedung = Gedung::find($request->id_gedung);
         $prodi = Program_Studi::find($request->id_program_studi);
+        $gedung= Gedung::find($request->id_gedung);
+        // $gedung = Gedung::where('id', $request->id)->first();
     
         $ruang = Ruang::create([
+            'id_gedung' => $gedung->id, 
             'nama_ruang' => $request->nama_ruang,
             'kapasitas' => $request->kapasitas,
-            'id_gedung' => $gedung->id, 
             'id_program_studi' => $prodi->id,
         ]);
+
 
         return response()->json([
             'success' => true,

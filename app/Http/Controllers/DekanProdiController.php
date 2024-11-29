@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Program_Studi;
 use App\Models\Ruang;
+use App\Models\MataKuliah;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -58,9 +59,11 @@ class DekanProdiController extends Controller
         return view('Dekan.alokasi.detail-program_studi', ['program_studi' => $program_studi, 'allProgramStudi' => $allProgramStudi, 'ruang' => $ruang]);
     }
 
-    public function showFromJadwal(string $id)
-    {
-        $allProgramStudi = Program_Studi::all();
-        return view('Dekan.atur jadwal.detail-program_studi', ['allProgramStudi' => $allProgramStudi]);
-    }
+    // public function showFromJadwal(string $id)
+    // {
+    //     $allProgramStudi = Program_Studi::all();
+    //     $program_studi = Program_Studi::find($id);
+    //     $mata_kuliah = MataKuliah::all(); 
+    //     return view('Dekan.atur jadwal.detail-program_studi', ['allProgramStudi' => $allProgramStudi, 'program_studi' => $program_studi, 'mata_kuliah' => $mata_kuliah]);
+    // }
 }

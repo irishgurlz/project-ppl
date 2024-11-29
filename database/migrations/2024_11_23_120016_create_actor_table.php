@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ketua_program_studi', function (Blueprint $table) {
+        Schema::create('actor', function (Blueprint $table) {
             $table->id();
-            $table->string('nidn_dosen', 10);
-            $table->foreign('nidn_dosen')->references('nidn')->on('dosen');
-            $table->unsignedBigInteger('id_program_studi');
-            $table->foreign('id_program_studi')->references('id')->on('program_studi');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->enum('role',['akademik', 'dekan', 'ketua_program_studi', 'pembimbing_akademik', 'mahasiswa']);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ketua_program_studi');
+        Schema::dropIfExists('actor');
     }
 };

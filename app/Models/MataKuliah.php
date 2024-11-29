@@ -39,5 +39,21 @@ class MataKuliah extends Model
     {
         return $this->belongsTo(Dosen::class, 'nidn_dosen_3', 'nidn');
     }
+
+    public function programStudi()
+    {
+    return $this->belongsTo(Program_Studi::class, 'id_program_studi');
+    }
+
+    public function listKelas()
+    {
+        return $this->hasMany(Kelas::class, 'kodemk');
+    }
+    
+
+    public function listJadwal()
+    {
+        return $this->hasMany(Jadwal::class, 'kodemk', 'kodemk');
+    }
     
 }

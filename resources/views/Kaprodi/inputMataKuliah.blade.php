@@ -102,8 +102,8 @@
                                                     @empty
                                                     <option value="">Tidak Ada Dosen</option>
                                                     @endforelse
-                                                </select> --}}
-                                                {{-- @error('dosen2')
+                                                </select>
+                                                @error('dosen2')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror --}}
                                             </div>

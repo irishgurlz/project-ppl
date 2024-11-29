@@ -3,24 +3,17 @@
     <div class="modal-dialog modal-lg d-flex justify-content-center">
         <div class="modal-content" style="background-color: #775E90; border-radius: 15px; width: 60%;">
             <div class="modal-header">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Tambah Program Studi</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">Tambah Ruang</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="form-add-ruang" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-3">
-                        <label for="id_gedung" class="form-label text-white">Gedung</label>
-                        <select name="id_gedung" id="id_gedung" class="input-form">
-                            <option value="" disabled selected>--Pilih Gedung--</option>
-                            @forelse ($allGedung as $item)
-                                <option value="{{$item->id}}">{{$item->nama_gedung}}</option>
-                            @empty
-                                <option value="">Tidak Ada Gedung</option>
-                            @endforelse
-                        </select>
-                        <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-id_gedung"></div>
+
+                    <div class="mb-3" style="display: none;">
+                        <input type="hidden" name="id_gedung" id="id_gedung" value="{{ $gedung->id }}">
                     </div>
+                    
                     <div class="mb-3">
                         <label for="nama_ruang" class="form-label text-white">Nama Ruang</label>
                         <input type="text" class="form-control" id="nama_ruang" name="nama_ruang" style="border: none;">

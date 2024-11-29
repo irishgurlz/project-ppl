@@ -10,8 +10,6 @@ class Ruang extends Model
     use HasFactory;
 
     protected $table = 'ruang';
-    
-    // Menambahkan 'status' ke dalam array $fillable
     protected $fillable = ['nama_ruang', 'kapasitas', 'id_program_studi', 'id_gedung', 'status'];
 
     public function gedung()
@@ -22,5 +20,10 @@ class Ruang extends Model
     public function programStudi()
     {
         return $this->belongsTo(Program_Studi::class, 'id_program_studi');
+    }
+    
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class, 'id_ruang');  // Asumsi 'id_ruang' adalah foreign key
     }
 }
