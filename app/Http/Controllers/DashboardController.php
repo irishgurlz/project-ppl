@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Actor;
+use App\Models\Ketua_Program_Studi;
 
 class DashboardController extends Controller
 {
@@ -24,6 +25,13 @@ class DashboardController extends Controller
 
     public function kaprodi(){
         $actor = auth()->user();
+        // $kaprodi = Ketua_Program_Studi::first();
         return view('/Kaprodi/dashboard', compact('actor'));
+    }
+
+    public function pembimbing(){
+        $actor = auth()->user();
+        // $kaprodi = Ketua_Program_Studi::first();
+        return view('/pembimbing/dashboard', compact('actor'));
     }
 }

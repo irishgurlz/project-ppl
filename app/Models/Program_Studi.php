@@ -29,7 +29,7 @@ class Program_Studi extends Model
 
     public function ketua_program_studi()
     {
-        return $this->hasOne(Ketua_Program_Studi::class, 'id_ketua_program_studi', 'id');
+        return $this->hasOne(Ketua_Program_Studi::class, 'id');
     }
 
     

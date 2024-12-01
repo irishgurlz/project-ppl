@@ -29,8 +29,9 @@
                             <!-- Untuk Dropdown -->
                             <div class="d-flex justify-content-between" style="width:90%">
                                 <div class="">
+
                                     <!-- Search bar -->
-                                    <nav class=" navbar">
+                                    <nav class=" navbar">   
                                     <div class="container-fluid">
                                         <a class="navbar-brand">
                                             <!-- Text "Show" on the left of dropdown -->
@@ -57,11 +58,15 @@
                                 </div>
 
                                 <div class= "col-3">
+                                    <div>
+                                        <a href="/kaprodi/aturJadwal/lihatJadwal" class="btn btn-sm btn-details" style="width:100%">Lihat Jadwal</a>
+                                    </div>
                                     <select id="jenis_semester_select" class= "input-form mt-2" aria-label="Default select example">
                                         <option disabled selected>--Pilih Jenis Semester--</option>
                                         <option value="ganjil">Ganjil</option>
                                         <option value="genap">Genap</option>
                                     </select>
+
                                 </div>
                             </div>
                             
@@ -77,30 +82,30 @@
                                             <th>Jenis</th>
                                             <th>SKS</th>
                                             <th>Semester</th>
-                                            {{-- <th>Status</th> --}}
+                                            <th>Status Jadwal</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse ($mata_kuliah as $key => $value)
                                         <tr class= "text-center">
-                                            <td> {{$key+1}}</td>
-                                            <td> {{$value -> nama_mata_kuliah}}</td>
+                                            <td> {{$key + 1}}</td>
+                                            <td style="width:30%"> {{$value -> nama_mata_kuliah}}</td>
                                             <td> {{$value -> jenis_mata_kuliah}}</td>
                                             <td> {{$value -> sks}}</td>
-                                            <td> {{$value -> semester}}</td>
-                                            {{-- <td> 
-                                                <span class="badge rounded-pill {{ $value->status == 1 ? 'bg-success' : ($value->status == 2 ? 'bg-danger' : 'bg-warning') }}">
-                                                    {{ $value->status == 1 ? 'Diterima' : ($value->status == 2 ? 'Ditolak' : 'Menunggu') }} 
-                                            </td> --}}
+                                            <td style="width:1%"> {{$value -> semester}}</td>
+                                            <td style="width:15%"> 
+                                                <span class="badge rounded-pill {{ $value->status_jadwal == 1 ? 'bg-success' : ($value->status_jadwal == 2 ? 'bg-danger' : 'bg-warning') }}" style="width:100px;">
+                                                    {{ $value->status_jadwal == 1 ? 'Diterima' : ($value->status_jadwal == 2 ? 'Ditolak' : 'Menunggu') }} 
+                                            </td>
                                             {{-- <td> {{$value -> nidn_dosen_1}}</td>
                                             <td> {{$value -> nidn_dosen_2}}</td>
                                             <td> {{$value -> nidn_dosen_3}}</td> --}}
-                                            <td><a href="/kaprodi/aturJadwal/{{$value->id}}" class="btn btn-sm btn-details">Details</a></td>
+                                            <td><a href="/kaprodi/aturJadwal/{{$value->id}}" class="btn btn-sm btn-details">Buat Jadwal</a></td>
                                         </tr>
                                         @empty
                                         <tr>
-                                            <td> Tidak ada data </td>
+                                            <td colspan="6"> Tidak ada data </td>
                                         </tr>
                                         @endforelse
                                     </tbody>

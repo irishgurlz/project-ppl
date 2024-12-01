@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
             $table->string('NIM');
-            $table->string('nama_mahasiswa');
+            // $table->string('nama_mahasiswa');
             $table->text('alamat');
             $table->year('angkatan');
             $table->unsignedBigInteger('id_program_studi');

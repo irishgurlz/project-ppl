@@ -20,7 +20,7 @@
             @error('nama_program_studi')
                 <div class="alert alert-danger">{{$message}}</div>
             @enderror
-            <div class="mb-3 mt-3">
+            {{-- <div class="mb-3 mt-3">
                 <label for="id_ketua_program_studi" class="form-label text-white me-3">Ketua Program Studi</label>
                 <select name="id_ketua_program_studi" id="id_ketua_program_studi" class="input-form" >
                     <option value="" disabled selected>--Pilih Ketua Program Studi--</option>
@@ -30,11 +30,11 @@
                         <option value="">Tidak Ada Ketua Program Studi</option>
                     @endforelse
                 </select>
-                {{-- <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-id_ketua_program_studi"></div> --}}
+                <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-id_ketua_program_studi"></div>
             </div>
             @error('id_ketua_program_studi')
                 <div class="alert alert-danger">{{$message}}</div>
-            @enderror
+            @enderror --}}
             <div class="d-flex justify-content-end mt-3">
                 <a href="/akademik/program_studi" class="btn btn-cancel" style="width:25%;">Cancel</a>
                 <button type="submit" class="btn btn-add ms-1" style="width:25%;">Add</button>

@@ -22,14 +22,14 @@
         <a href="/dekan/ruang" class="nav-link">
             <div type="button" class="sideOp {{ (Request::is('dekan/ruang') || Request::is('dekan/ruang/*')) ? 'active' : '' }}">
                 <div>
-                    <img src="{{ asset('img/room.png') }}" class="side-logo me-3" alt="Alokasi Ruangan" loading="lazy">Alokasi Ruangan
+                    <img src="{{ asset('img/room.png') }}" class="side-logo me-3" alt="Alokasi Ruangan" loading="lazy">Verifikasi Ruangan
                 </div>
             </div>
         </a>
         <a href="/dekan/jadwal" class="nav-link">
             <div type="button" class="sideOp {{ (Request::is('dekan/jadwal') || Request::is('dekan/jadwal/*')) ? 'active' : '' }}">
                 <div>
-                    <img src="{{ asset('img/prodi.png') }}" class="side-logo me-3" alt="Atur Jadwal Kuliah" loading="lazy">Atur Jadwal Kuliah
+                    <img src="{{ asset('img/prodi.png') }}" class="side-logo me-3" alt="Atur Jadwal Kuliah" loading="lazy">Verifikasi Jadwal
                 </div>
             </div>
         </a>

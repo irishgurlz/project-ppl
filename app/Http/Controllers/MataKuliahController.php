@@ -7,6 +7,7 @@ use App\Models\MataKuliah;
 use App\Models\Dosen;
 use App\Models\Program_Studi;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 
 class MataKuliahController extends Controller
@@ -16,8 +17,9 @@ class MataKuliahController extends Controller
      */
     public function index()
     {
-        //
-        $mata_kuliah = MataKuliah::all();
+        $user = Auth::user();
+        $prodi_id = $user->user->id_program_studi;
+        $mata_kuliah = MataKuliah::where('id_program_studi', $prodi_id)->get();
         $dosen = Dosen::all();
         return view('Kaprodi.inputMataKuliah1', ['mata_kuliah' => $mata_kuliah, 'dosen' => $dosen]);
     }

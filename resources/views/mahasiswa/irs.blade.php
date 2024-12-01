@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>IRS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -234,6 +236,7 @@
                                             <th>Jam Mulai</th>
                                             <th>Jam Selesai</th>
                                             <th>Ruang</th>
+                                            <th>SKS</th>
                                             <th>Diambil</th>
                                             {{-- <th>Lihat Jadwal</th> --}}
                                         </tr>
@@ -248,7 +251,6 @@
                 </div>
             </div>
         </div>
-        
     </main>
     <script>
         function switchTab(tabId) {
@@ -280,22 +282,33 @@
                 method: 'GET',
                 data: { kodemk: kodemk },
                 success: function(response) {
+                    console.log(response);
                     $('#jadwal-body').empty();
 
                     if (response.length > 0) {
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                         response.forEach((item, index) => {
                             $('#jadwal-body').append(`
                                 <tr class="text-center">
                                     <td>${index + 1}</td>
-                                    <td>${item.kodemk}</td>
+                                    <td>${item.list_mata_kuliah?.nama_mata_kuliah}</td>
                                     <td>${item.hari}</td>
                                     <td>${item.jam_mulai}</td>
                                     <td>${item.jam_selesai}</td>
                                     <td>${item.id_ruang}</td>
+                                    <td>${item.list_mata_kuliah?.sks}</td>
                                     <td>
-                                        <div class="col p-0 d-flex justify-content-center align-items-center">
-                                            <a class="btn btn-detail-sm-2 me-1">Details</a>
-                                        </div>
+                                        <form action="/mahasiswa/irs" method="post">
+                                            <input type="hidden" name="_token" value="${csrfToken}">
+                                            <input type="hidden" name="id_jadwal" value="${item.id}">
+                                            <input type="hidden" name="kodemk" value="${item.kodemk}">
+                                            <input type="hidden" name="hari" value="${item.hari}">
+                                            <input type="hidden" name="jam_mulai" value="${item.jam_mulai}">
+                                            <input type="hidden" name="jam_selesai" value="${item.jam_selesai}">
+                                            <input type="hidden" name="sks" value="${item.list_mata_kuliah?.sks}">
+                                            <input type="hidden" name="id_mahasiswa" id="mahasiswa" value="{{Auth::user()->id}}">
+                                            <button type="submit" class="btn btn-detail-sm-2 me-1">Ambil</button>
+                                        </form>
                                     </td>
                                 </tr>
                             `);

@@ -33,8 +33,8 @@
                         <span style="font-size: 1.2em;">&#8592;</span>
                     </a>
                     <!-- Semester Button -->
-                    <button class="btn btn-primary" style="background-color: #3D3C95; border-color: #3D3C95; border-radius: 8px; padding: 5px 20px;">
-                        <strong>Semester 1</strong>
+                    <button class="badge" style="background-color: #3D3C95; border-color: #3D3C95; border-radius: 8px; padding: 5px 20px;">
+                        <strong>Semester {{$mata_kuliah->semester}}</strong>
                     </button>
                 </div>
 
@@ -72,10 +72,10 @@
                                 <div>
                                     <div class="d-flex justify-content-between">
                                         <strong style="display: block; margin-bottom: 2px;">{{$value->hari}}</strong>
-                                        <div style="margin-left: 20%">
+                                        {{-- <div style="margin-left: 20%">
                                             <span id="status-{{ $value->id }}" class="badge rounded-pill {{ $value->status == 1 ? 'bg-success' : ($value->status == 2 ? 'bg-danger' : 'bg-warning') }}">
                                                 {{ $value->status == 1 ? 'Diterima' : ($value->status == 2 ? 'Ditolak' : 'Menunggu') }} 
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     @php
                                         $startTime = strtotime($value->jam_mulai); 
@@ -87,10 +87,14 @@
                                     <p class="m-0" style="line-height: 1.2; margin-bottom: 2px;">{{$startTimeFormatted }} - {{$endTimeFormatted}}</p>
                                     <p class="m-0" style="line-height: 1.2;">{{$value->ruang->nama_ruang}}</p>
                                 </div>
-                                <!-- Tombol Edit -->
-                                <a href="editKelas" class="btn" style="background-color: #EC8B7B; color: black; border: none; border-radius: 8px; padding: 5px 15px; font-weight: bold;">
-                                    Edit
-                                </a>
+                                <form action="/kaprodi/aturJadwal/{{$value->id}}/edit" method="get">
+                                    @csrf
+                                <!-- Tombol Edit --> 
+                                    <input type="hidden" name="kodemk" value="{{$value->kodemk}}">
+                                    <button type="submit" class="btn" style="background-color: #EC8B7B; color: black; border: none; border-radius: 8px; padding: 5px 15px; font-weight: bold;">
+                                        Edit
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>

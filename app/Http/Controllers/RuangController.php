@@ -68,7 +68,6 @@ class RuangController extends Controller
     
         $prodi = Program_Studi::find($request->id_program_studi);
         $gedung= Gedung::find($request->id_gedung);
-        // $gedung = Gedung::where('id', $request->id)->first();
     
         $ruang = Ruang::create([
             'id_gedung' => $gedung->id, 
@@ -88,24 +87,6 @@ class RuangController extends Controller
             ],
         ]);
 
-        // Nanti hapus
-        // $request->validate([
-        //     'nama_ruang' => 'required',
-        //     'kapasitas' => 'required|integer',
-        //     'id_program_studi' => 'required|exists:program_studi,id',
-        //     'id_gedung' => 'required|exists:gedung,id'
-        // ]);
-    
-        // $ruang = new Ruang;
-        // $ruang->nama_ruang = $request->nama_ruang;
-        // $ruang->kapasitas = $request->kapasitas;
-        // $ruang->id_program_studi = $request->id_program_studi;
-        // $ruang->id_gedung = $request->id_gedung;
-    
-        // $ruang->save();
-        // $gedung = Gedung::find($request->id_gedung);
-        // return redirect()->route('gedung.show', $gedung->id)
-        // ->with('success', 'Ruang berhasil ditambahkan.');
     }
     
     

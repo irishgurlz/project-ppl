@@ -17,8 +17,8 @@ class ProgramStudiController extends Controller
     {
         //
         $program_studi = Program_Studi::all(); 
-        $ketua_program_studi = Ketua_Program_Studi::with('dosen')->get();
-        return view('Bagian Akademik.input prodi.detail-prodi', ['program_studi' => $program_studi, 'ketua_program_studi' => $ketua_program_studi]);
+        // $ketua_program_studi = Ketua_Program_Studi::with('dosen')->get();
+        return view('Bagian Akademik.input prodi.detail-prodi', ['program_studi' => $program_studi]);
     }
 
     /**
@@ -37,16 +37,13 @@ class ProgramStudiController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama_program_studi' => 'required',
-            'id_ketua_program_studi' => 'required|exists:ketua_program_studi,id',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $ketua_program_studi = Ketua_Program_Studi::find($request->id_ketua_program_studi);
         $program_studi = Program_Studi::create([
             'nama_program_studi' => $request->nama_program_studi,
-            'id_ketua_program_studi' => $ketua_program_studi->id,
         ]);
 
         return response()->json([
@@ -70,8 +67,7 @@ class ProgramStudiController extends Controller
     public function edit(string $id)
     {
         $program_studi = Program_Studi::find($id);
-        $ketua_program_studi = Ketua_Program_Studi::with('dosen')->get();
-        return view('Bagian Akademik.input prodi.edit-prodi', ['program_studi'=>$program_studi,  'ketua_program_studi' => $ketua_program_studi]);
+        return view('Bagian Akademik.input prodi.edit-prodi', ['program_studi'=>$program_studi]);
     }
 
     /**
@@ -82,14 +78,13 @@ class ProgramStudiController extends Controller
         // Validate the incoming data
         $request->validate([
             'nama_program_studi' => 'required',
-            'id_ketua_program_studi' => 'required|exists:ketua_program_studi,id',
         ]);
         $program_studi = Program_Studi::findOrFail($id);
 
         $program_studi->nama_program_studi = $request->input('nama_program_studi');
 
-        $ketua_program_studi = Ketua_Program_Studi::findOrFail($request->input('id_ketua_program_studi'));
-        $program_studi->ketua_program_studi()->associate($ketua_program_studi);
+        // $ketua_program_studi = Ketua_Program_Studi::findOrFail($request->input('id_ketua_program_studi'));
+        // $program_studi->ketua_program_studi()->associate($ketua_program_studi);
     
         $program_studi->save();
 

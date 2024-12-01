@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('program_studi', function (Blueprint $table) {
             $table->id(); 
             $table->string('nama_program_studi');
-            $table->unsignedBigInteger('id_ketua_program_studi');
-            $table->foreign('id_ketua_program_studi')->references('id')->on('ketua_program_studi');
+            // $table->unsignedBigInteger('id_ketua_program_studi');
+            // $table->foreign('id_ketua_program_studi')->references('id')->on('ketua_program_studi');
             $table->timestamps(); 
         });
         

@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@php
+$user = Auth::user();
+$kaprodi = $user->user;
+$prodi_id = $kaprodi->id_program_studi;
+@endphp
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,6 +63,8 @@
                                 <div class="custom-card shadow-lg">
                                     <form action="/kaprodi/mata_kuliah" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="hidden" name="id_program_studi" id="program_studi" value="{{$prodi_id}}">
+
                                         <!-- Form Kode Mata Kuliah -->
                                         <div class="row mb-3 align-items-center">
                                             <label for="kodeMataKuliah" class="col-sm-2 col-form-label">Kode Mata Kuliah</label>
@@ -91,11 +99,11 @@
                                         </div>
 
                                         <!-- Form Dosen 2 -->
-                                        <div class="row mb-3 align-items-center">
+                                        {{-- <div class="row mb-3 align-items-center">
                                             <label class="col-sm-2 col-form-label">Prodi</label>
                                             <div class="col-sm-10">
                                                 <input type="text" value="3" id="program_studi" name="id_program_studi">
-                                                {{-- <select name="program_studi" class="input-form" style="width:100%">
+                                                <select name="program_studi" class="input-form" style="width:100%">
                                                     <option value="" disabled selected>-Pilih Prodi</option>
                                                     @forelse ($program_studi as $item)
                                                     <option value="{{ $item->id }}">{{ $item->nama_program_studi }}</option>
@@ -105,9 +113,9 @@
                                                 </select>
                                                 @error('dosen2')
                                                     <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror --}}
+                                                @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <!-- Form Dosen 1 -->
                                         <div class="row mb-3 align-items-center">

@@ -14,7 +14,7 @@
                         <input type="text" class="form-control" id="nama_program_studi" name="nama_program_studi" style="border: none;">
                         <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-nama_program_studi"></div>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="id_ketua_program_studi" class="form-label text-white" style="width: 100%;">Ketua Program Studi</label>
                         <select name="id_ketua_program_studi" id="id_ketua_program_studi" class="input-form" style="width: 100%;">
                             <option value="" disabled selected>--Pilih Ketua Program Studi--</option>
@@ -25,7 +25,7 @@
                             @endforelse
                         </select>
                         <div class="alert alert-danger mt-2 d-none" role="alert" id="alert-id_ketua_program_studi"></div>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
             <div class="modal-footer">
@@ -69,28 +69,27 @@ $('#store').click(function(e) {
             // Jika sukses, tambahkan baris baru ke tabel tanpa refresh
             let rowCount = $('#data-table tbody tr').length + 1; // Menghitung jumlah baris + 1
 
-            let newRow = `<tr>
+            let newRow = 
+            `<tr class="text-center">
                 <td>${rowCount}</td>  <!-- Ini nomor urut yang dihitung -->
-                            <td>${response.data.nama_program_studi}</td>
-                            <td>
-                                <span class="badge rounded-pill bg-secondary"> ${response.data.id_ketua_program_studi}</span></td>
-                            <td>
-                               <div class="row d-flex justify-content-start g-0">
-                                  <div class="col p-0 d-flex align-items-center">
-                                     <a href="/akademik/program_studi/${response.data.id}/edit">
-                                        <img src="{{ asset('img/edit.png') }}" style="width: 24px; height: 24px;">
-                                     </a>
-                                     <form action="/akademik/program_studi/${response.data.id}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" style="background: none; border: none;">
-                                           <img src="{{ asset('img/trash.png') }}" style="width: 24px; height: 24px;">
-                                        </button>
-                                     </form>
-                                  </div>
-                               </div>
-                            </td>
-                          </tr>`;
+                <td>${response.data.nama_program_studi}</td>
+                <td>
+                    <div class="row">
+                        <div class="col p-0 d-flex justify-content-center">
+                            <a href="/akademik/program_studi/${response.data.id}/edit" style="padding: 0; margin: 0;">
+                                <img src="{{ asset('img/edit.png') }}" style="width: 24px; height: 24px;">
+                            </a>
+                            <form action="/akademik/program_studi/${response.data.id}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" style="background: none; border: none;">
+                                    <img src="{{ asset('img/trash.png') }}" style="width: 24px; height: 24px;">
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </td>
+            </tr>`;
             $('#data-table tbody').append(newRow);  // Tambahkan baris baru ke tabel
 
             // Kosongkan form modal setelah disimpan

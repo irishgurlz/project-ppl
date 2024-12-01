@@ -13,6 +13,7 @@ use App\Models\Ruang;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -24,7 +25,10 @@ class KaprodiJadwalController extends Controller
     public function index()
     {
         //
-        $mata_kuliah = MataKuliah::all();
+        // $mata_kuliah = MataKuliah::all();
+        $user = Auth::user();
+        $prodi_id = $user->user->id_program_studi;
+        $mata_kuliah = MataKuliah::where('id_program_studi', $prodi_id)->get();
         $dosen = Dosen::all();
         return view('Kaprodi.aturJadwal', ['mata_kuliah' => $mata_kuliah, 'dosen' => $dosen]);
     }
@@ -66,9 +70,11 @@ class KaprodiJadwalController extends Controller
         // $mata_kuliah = MataKuliah::all();
         $mata_kuliah = MataKuliah::where('kodemk', $request->kodemk)->first();
 
+        $user = Auth::user();
+        $prodi_id = $user->user->id_program_studi;
 
         $ruang = Ruang::where('status', '=', '1')
-                ->where('id_program_studi', '=', 3)
+                ->where('id_program_studi', '=', $prodi_id)
                 ->get();
 
         return view('Kaprodi.tambahKelas', compact('mata_kuliah', 'jadwal', 'ruang'));
@@ -131,10 +137,6 @@ class KaprodiJadwalController extends Controller
                         })
                         ->exists();
 
-        // Log hasil pengecekan
-        \Log::info('Room status', [
-            'occupied' => $jadwal
-        ]);
 
         if ($jadwal) {
             return response()->json([
@@ -163,12 +165,38 @@ class KaprodiJadwalController extends Controller
         return view('Kaprodi.detailsaturJadwal', compact('mata_kuliah', 'jadwal'));
     }
 
+    
+    public function lihatJadwal(Request $request)
+    {
+        
+        $user = Auth::user();
+        $prodi_id = $user->user->id_program_studi;
+        $mata_kuliah = MataKuliah::where('id_program_studi', $prodi_id)->get();
+        
+        $jadwal = Jadwal::all();
+        return view('kaprodi.lihatJadwal', compact('jadwal'));
+    }
+    
+
+    
+    
+
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
-        //
+        $jadwal = Jadwal::where('kodemk', $request->kodemk)->first();
+        $mata_kuliah = MataKuliah::where('kodemk', $request->kodemk)->first();
+
+        $user = Auth::user();
+        $prodi_id = $user->user->id_program_studi;
+
+        $ruang = Ruang::where('status', '=', '1')
+                ->where('id_program_studi', '=', $prodi_id)
+                ->get();
+
+        return view('Kaprodi.editKelas', compact('mata_kuliah', 'jadwal', 'ruang'));
     }
 
     /**
@@ -176,7 +204,30 @@ class KaprodiJadwalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'kodemk' => 'required|exists:mata_kuliah,kodemk',
+            'kelas_matkul' => 'required|string|max:255',
+            'hari' => 'required|string|max:255',
+            'jam_mulai' => 'required|date_format:H:i',
+            'jam_selesai' => 'required|date_format:H:i', // Validasi jam_selesai
+            'kuota' => 'required|integer|min:1',
+            'id_ruang' => 'required|exists:ruang,id', 
+            'jenis_semester' => 'required|string|in:Ganjil,Genap', 
+        ]);
+
+        $jadwal = Jadwal::find($id);
+        $jadwal->kodemk = $request->kodemk;
+        $jadwal->kelas_matkul = $request->kelas_matkul;
+        $jadwal->hari =$request->hari;
+        $jadwal->jam_mulali = $request->jam_mulali;
+        $jadwal->jam_selesai = $request->jam_selesai;
+        $jadwal->kuota = $request->kuota;
+        $jadwal->id_ruang = $request->id_ruang;
+        $jadwal->jenis_semester = $request->jenis_semester;
+
+        $jadwal->save();
+        $mata_kuliah = MataKuliah::find($request->kodemk);
+        return redirect('/kaprodi/aturJadwal/show', $mata_kuliah->kodemk);
     }
 
     /**

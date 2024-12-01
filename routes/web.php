@@ -18,6 +18,9 @@ use App\Http\Controllers\IRSController;
 // kaprodi
 use App\Http\Controllers\MataKuliahController;
 
+//pembimbing
+use App\Http\Controllers\PerwalianController;
+
 
 
 // Route::get('/', function () {
@@ -85,7 +88,7 @@ Route::group(['middleware' => 'auth:mahasiswa'], function(){
     // Route::get('/irs', function () {
     //     return view('mahasiswa/irs');
     // })->name('irs');
-
+    Route::get('/mahasiswa/irs/getSKS', [IRSController::class, 'getSKS'])->name('getSKS');
     Route::resource('/mahasiswa/irs', IRSController::class);
     
     
@@ -169,6 +172,10 @@ Route::group(['middleware' => 'auth:ketua_program_studi'], function(){
 
     Route::get('/kaprodi/aturJadwal/checkRuangan', [KaprodiJadwalController::class, 'checkRuangan']);
     Route::resource ('/kaprodi/mata_kuliah', MataKuliahController:: class);
+
+
+    Route::get('/kaprodi/aturJadwal/lihatJadwal', [KaprodiJadwalController::class, 'lihatJadwal']) -> name('kaprodi.aturJadwal.lihatJadwal');
+
     Route::post('/kaprodi/aturJadwal/storeKelas', [KaprodiJadwalController::class, 'storeKelas']) -> name('kaprodi.aturJadwal.storeKelas');
     Route::get('/kaprodi/aturJadwal/createKelas', [KaprodiJadwalController::class, 'createKelas']) -> name('kaprodi.aturJadwal.createKelas');
     Route::get('/kaprodi/aturJadwal/semester', [KaprodiJadwalController::class, 'getMataKuliahSemester']) -> name('kaprodi.aturJadwal.semester');
@@ -187,3 +194,56 @@ Route::get('/auth/logout', [AuthController::class, 'logout']) ->name('auth.logou
 
 
 Route::get('/dashboard', [DashboardController::class, 'index']) ->name('dashboard.index');
+
+
+
+
+// ============================PEMBIMBING============================
+// Route for the login page
+Route::group(['middleware' => 'auth:pembimbing_akademik'], function(){
+    Route::get('/pembimbing/dashboard', [DashboardController::class, 'pembimbing']);
+    Route::resource ('/pembimbing/perwalian', PerwalianController:: class);
+
+
+    // Route for the profile
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile');
+
+    // Route for the alokasi page
+    Route::get('/alokasi', function () {
+        return view('alokasi');
+    });
+
+    // Combined route for perwalian
+    // Route::get('/perwalian', function () {
+    //     return view('Pembimbing/perwalian');
+    // })->name('perwalian');
+
+    // Route for the academics page
+    Route::get('/academics', function () {
+        return view('Pembimbing/academics'); // Replace with the actual view name for academics
+    })->name('academics');
+
+    // Route for the schedule page
+    Route::get('/schedule', function () {
+        return view('Pembimbing/schedule'); // Replace with the actual view name for schedule
+    })->name('schedule');
+
+    // Route for the profile
+    Route::get('/editProfile', function () {
+        return view('Pembimbing/editProfile');
+    });
+    // Route for the perwalian
+    Route::get('/irsApproved', function () {
+        return view('Pembimbing/irsApproved');
+    });
+    // Route for the MahasiswaKHS 
+    Route::get('/mahasiswaKHS', function(){
+        return view('Pembimbing/mahasiswaKHS');
+    });
+    // Route for the DaftarMahasiswa
+    Route::get('/daftarmahasiswa', function () {
+        return view('Pembimbing/daftarmahasiswa');
+    });
+});

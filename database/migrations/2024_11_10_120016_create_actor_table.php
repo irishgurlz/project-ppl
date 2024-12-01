@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->string('user_type');
             $table->string('password');
             $table->enum('role',['akademik', 'dekan', 'ketua_program_studi', 'pembimbing_akademik', 'mahasiswa']);
             $table->timestamps();

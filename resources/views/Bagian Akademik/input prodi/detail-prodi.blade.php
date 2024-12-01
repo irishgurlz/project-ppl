@@ -15,8 +15,8 @@
           <th>No</th>
           <th>Nama Program studi</th>
           {{-- <th>Total Mahasiswa</th> --}}
-          <th>Ketua Program Studi</th>
-          <th>Aksi</th>
+          {{-- <th>Ketua Program Studi</th> --}}
+          <th class="">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -24,25 +24,20 @@
           <tr class="text-center">
             <td>{{ $key + 1 }}</td>
             <td>{{ $value->nama_program_studi }}</td>
-            {{-- <td>{{ $value->total_mahasiswa }}</td> --}}
-            <td> 
-              <span class="badge rounded-pill bg-secondary">
-                {{ $value->ketua_program_studi->dosen->nama_dosen }} </span>
-            </td>
-            <td>
+            <td class="">
 
-              <div class="row d-flex justify-content-start g-0">
-                <div class="col p-0 d-flex align-items-center">
+              <div class="row">
+                <div class="col p-0 d-flex justify-content-center">
                     <a href="/akademik/program_studi/{{ $value->id }}/edit" style="padding: 0; margin: 0;">
                         <img src="{{ asset('img/edit.png') }}" alt="" style="width: 24px; height: 24px;">
                     </a>
-                    {{-- <form action="/akademik/program_studi/{{ $value->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');" style="padding: 0; margin: 0;">
+                    <form action="/akademik/program_studi/{{ $value->id }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');" style="padding: 0; margin: 0;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" style="background: none; border: none; padding: 0; margin: 0; cursor: pointer;">
                             <img src="{{ asset('img/trash.png') }}" style="width: 24px; height: 24px;">
                         </button>
-                    </form> --}}
+                    </form>
                 </div>
             </div>
             

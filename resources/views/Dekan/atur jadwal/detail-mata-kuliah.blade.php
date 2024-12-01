@@ -62,15 +62,13 @@
                                     </div>
                                 </div>
                                 @php
-                                $startTime = strtotime($value->jam); 
-                                $startMinutes = date('H', $startTime) * 60 + date('i', $startTime); 
-                                $duration = ($value->listMataKuliah->sks ?? 0) * 50; 
-                                $endMinutes = $startMinutes + $duration; 
+                                        $startTime = strtotime($value->jam_mulai); 
+                                        $endTime = strtotime($value->jam_selesai); 
 
-                                $startTimeFormatted = date('H:i', $startTime);
-                                $endTime = sprintf('%02d:%02d', intdiv($endMinutes, 60), $endMinutes % 60); 
-                            @endphp
-                            <p class="m-0" style="line-height: 1.2; margin-bottom: 2px;">{{$startTimeFormatted }} - {{ $endTime }}</p>
+                                        $startTimeFormatted = date('H:i', $startTime);
+                                        $endTimeFormatted = date('H:i', $endTime);
+                                    @endphp
+                                    <p class="m-0" style="line-height: 1.2; margin-bottom: 2px;">{{$startTimeFormatted }} - {{$endTimeFormatted}}</p>
                                 {{$value->ruang->nama_ruang}}
                             </div>
                         </div>

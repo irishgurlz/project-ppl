@@ -27,17 +27,17 @@
                     <h3 class="card-title" style="font-weight: bold;">Welcome Back, {{$actor->name}}</h3>
                     <p class = "card-description d-none d-md-block" style="padding-top:2%; font-size: 95%;">"Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle."</p>
                 </div>
-                <img src="img/orang-1.png" class="orang mb-0" alt="">
+                <img src="{{ asset('img/orang-1.png')}}" class="orang mb-0" alt="">
             </div>
             <p class="fw-bold m-2">Task Board</p>
 
             <div class="sub-columns d-flex flex-column pt-2">
                 <!-- Verifikasi IRS -->
-                <div class="sub-column mb-3">
+                {{-- <div class="bg-info sub-column mb-3"> --}}
                     <div class="card d-flex flex-column p-3 h-100">
                         <div class="row">
                             <div class="col-2">
-                                <img src="img/task-1.png" class="task img-fluid">
+                                <img src="{{ asset('img/task-1.png')}}" class="task img-fluid">
                             </div>
                             <div class="col-9">
                                 <h5 class="fw-bold">Verifikasi IRS</h5>
@@ -48,14 +48,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                {{-- </div> --}}
 
                 <!-- Atur Jadwal Kuliah -->
-                <div class="sub-column mb-3">
+                {{-- <div class="sub-column mb-3"> --}}
                     <div class="card d-flex flex-column p-3 h-100">
                         <div class="row">
                             <div class="col-2">
-                                <img src="img/task-1.png" class="task img-fluid">
+                                <img src="{{ asset('img/task-1.png')}}" class="task img-fluid">
                             </div>
                             <div class="col-9">
                                 <h5 class="fw-bold">Atur Jadwal Kuliah</h5>
@@ -66,14 +66,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                {{-- </div> --}}
 
                 <!-- Input Matkul -->
-                <div class="sub-column mb-3">
+                {{-- <div class="sub-column mb-3"> --}}
                     <div class="card d-flex flex-column p-3 h-100">
                         <div class="row">
                             <div class="col-2">
-                                <img src="img/task-1.png" class="task img-fluid">
+                                <img src="{{ asset('img/task-1.png')}}" class="task img-fluid">
                             </div>
                             <div class="col-9">
                                 <h5 class="fw-bold">Input Mata Kuliah</h5>
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                {{-- </div> --}}
             </div>
         </div>
 
